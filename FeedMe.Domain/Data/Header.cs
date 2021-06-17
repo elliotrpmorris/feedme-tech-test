@@ -15,7 +15,7 @@ namespace FeedMe.Domain
             int msgId,
             string operation,
             string type,
-            int timestamp)
+            long timestamp)
         {
             if (msgId < 0)
             {
@@ -47,7 +47,7 @@ namespace FeedMe.Domain
 
         public string Operation { get; set; }
 
-        public int Timestamp { get; }
+        public long Timestamp { get; }
 
         public string Type { get; set; }
     }

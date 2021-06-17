@@ -4,16 +4,28 @@
 
 namespace FeedMe.Console
 {
-    using System.IO;
-    using System.Net.Sockets;
+    using System;
     using FeedMe.Domain;
+    using Microsoft.Extensions.DependencyInjection;
 
     class Program
     {
         static void Main(string[] args)
         {
-            var feedMeClient = new FeedMeClient();
-            feedMeClient.ReceiveStream();
+            // TODO: We can move this to a service register class.
+            var services = new ServiceCollection()
+                .AddSingleton<IFeedMeClient, FeedMeClient>()
+                .AddScoped<IRecordParser, RecordParser>()
+                .BuildServiceProvider();
+
+            var feedMeClient = services.GetService<IFeedMeClient>();
+
+            feedMeClient.HandleStream();
+
+            if (services is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
         }
     }
 }

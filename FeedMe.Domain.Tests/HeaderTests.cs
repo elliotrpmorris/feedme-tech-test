@@ -85,6 +85,5 @@ namespace FeedMe.Domain.Tests
             Assert.Equal(type, ret.Type);
             Assert.Equal(timestamp, ret.Timestamp);
         }
-
     }
 }

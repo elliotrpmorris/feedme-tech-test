@@ -15,7 +15,7 @@ namespace FeedMe.Domain
             int msgId,
             string operation,
             string type,
-            int timestamp,
+            long timestamp,
             string eventId,
             string category,
             string subCategory,

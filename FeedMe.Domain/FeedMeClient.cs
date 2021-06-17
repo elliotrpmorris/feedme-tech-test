@@ -1,16 +1,15 @@
-﻿// <copyright file="Client.cs" company="SkyBet">
+﻿// <copyright file="FeedMeClient.cs" company="SkyBet">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
-using System;
 
 namespace FeedMe.Domain
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net.Sockets;
 
-    public class FeedMeClient
+    public class FeedMeClient : IFeedMeClient
     {
         // TODO: We could store this in config like appsettings.json.
         private const string Address = "localhost";
@@ -20,23 +19,41 @@ namespace FeedMe.Domain
 
         public StreamReader StreamReader { get; set; }
 
-        public FeedMeClient()
+        public IRecordParser RecordParser { get; set; }
+
+        public FeedMeClient(IRecordParser recordParser)
         {
+            this.RecordParser = recordParser;
             this.Client = new TcpClient(Address, Port);
             this.StreamReader = new StreamReader(this.Client.GetStream());
         }
 
-        public void ReceiveStream()
+        public void HandleStream()
         {
-            char[] charArray = new char[100];
-
             while (true)
             {
-                var readByteCount = this.StreamReader.Read(charArray, 0, charArray.Length);
-                if (readByteCount > 0)
+                var record = this.StreamReader.ReadLine();
+                if (!string.IsNullOrWhiteSpace(record))
                 {
-                    var data = new string(charArray, 0, readByteCount);
-                    Console.WriteLine(data + " + data");
+                    if (string.IsNullOrWhiteSpace(record))
+                    {
+                        throw new ArgumentException(nameof(record));
+                    }
+
+                    var recordProperties = this.RecordParser.ParseRecord(record);
+
+                    string operation = recordProperties.ElementAtOrDefault(1);
+                    string type = recordProperties.ElementAtOrDefault(2).ToLower();
+
+                    object x = type switch
+                    {
+                        "event" => this.RecordParser.BuildEvent(recordProperties),
+                        "market" => this.RecordParser.BuildMarket(recordProperties),
+                        "outcome" => this.RecordParser.BuildOutcome(recordProperties),
+                        _ => throw new NotImplementedException()
+                    };
+
+                    Console.WriteLine(record);
                 }
 
                 if (!this.Client.Connected)
