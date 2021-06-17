@@ -14,9 +14,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Properties\stylecop.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\stylecop.json" />
+    <Folder Include="Data\" />
   </ItemGroup>
 </Project>

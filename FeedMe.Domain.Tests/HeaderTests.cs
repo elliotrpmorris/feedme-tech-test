@@ -48,6 +48,22 @@ namespace FeedMe.Domain.Tests
                     1));
         }
 
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void Constructor_NullOrWhiteSpace_Type_ThrowsArgumentException(
+            string type)
+        {
+
+            Assert.Throws<ArgumentException>(() =>
+                new Header(
+                    2,
+                    "create",
+                    type,
+                    1));
+        }
+
         [Fact]
         public void Constructor_ValidParams_AreAssignedCorrectly()
         {
