@@ -27,7 +27,7 @@ namespace FeedMe.Domain.Tests
         }
 
         [Fact]
-        public void Constructor_ValidParams_AreAssignedCorrectly()
+        public void Handle_No_Escaped_Pipes_ParseRecord()
         {   
             var testOutcome = "|65918|update|outcome|1623959728785|f9ab135f-59e9-486d-837d-72a9a5c50c36|1872c8f9-53c3-4873-adc0-27f57d03a7c8|Draw 0-0|9/4|1|0";
 
