@@ -19,4 +19,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FeedMe.Domain\FeedMe.Domain.csproj" />
+  </ItemGroup>
 </Project>

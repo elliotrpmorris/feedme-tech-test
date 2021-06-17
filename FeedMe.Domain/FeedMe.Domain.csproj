@@ -4,4 +4,19 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(SolutionDir)analysis.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Properties\stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\stylecop.json" />
+  </ItemGroup>
 </Project>
