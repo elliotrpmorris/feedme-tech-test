@@ -20,6 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FeedMe.Domain\FeedMe.Domain.csproj" />
+    <ProjectReference Include="..\FeedMe.RecordParser.Domain\FeedMe.RecordParser.Domain.csproj" />
   </ItemGroup>
 </Project>

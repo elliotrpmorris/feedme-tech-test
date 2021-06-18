@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Console", "FeedMe.Console\FeedMe.Console.csproj", "{5D9EF778-F799-4937-AD6E-41EF523C1500}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.RecordParser.Console", "RecordParser\FeedMe.RecordParser.Console\FeedMe.RecordParser.Console.csproj", "{5D9EF778-F799-4937-AD6E-41EF523C1500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Domain", "FeedMe.Domain\FeedMe.Domain.csproj", "{87FE3D3F-C4D4-4904-84C6-34DEB346DDEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.RecordParser.Domain", "RecordParser\FeedMe.RecordParser.Domain\FeedMe.RecordParser.Domain.csproj", "{87FE3D3F-C4D4-4904-84C6-34DEB346DDEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Infrastructure", "FeedMe.Infrastructure\FeedMe.Infrastructure.csproj", "{DF2FB58B-5D3C-4957-AFD1-F3D41A447AF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.RecordParser.Infrastructure", "RecordParser\FeedMe.RecordParser.Infrastructure\FeedMe.RecordParser.Infrastructure.csproj", "{DF2FB58B-5D3C-4957-AFD1-F3D41A447AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Domain.Tests", "FeedMe.Domain.Tests\FeedMe.Domain.Tests.csproj", "{4D316FB1-6DDB-430A-83FE-74D4E379E4FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.RecordParser.Domain.Tests", "RecordParser\FeedMe.RecordParser.Domain.Tests\FeedMe.RecordParser.Domain.Tests.csproj", "{4D316FB1-6DDB-430A-83FE-74D4E379E4FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D048F842-4B97-49E4-8A66-48B5D52AAB46}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		stylecop.json = stylecop.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RecordParser", "RecordParser", "{8D0B2845-A32B-42B4-B9DD-1D711BFDBDA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Store", "Store", "{93959013-F396-43F9-80BB-E5236685DD63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,5 +84,11 @@ Global
 		{4D316FB1-6DDB-430A-83FE-74D4E379E4FF}.Release|x64.Build.0 = Release|Any CPU
 		{4D316FB1-6DDB-430A-83FE-74D4E379E4FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{4D316FB1-6DDB-430A-83FE-74D4E379E4FF}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D9EF778-F799-4937-AD6E-41EF523C1500} = {8D0B2845-A32B-42B4-B9DD-1D711BFDBDA5}
+		{87FE3D3F-C4D4-4904-84C6-34DEB346DDEC} = {8D0B2845-A32B-42B4-B9DD-1D711BFDBDA5}
+		{4D316FB1-6DDB-430A-83FE-74D4E379E4FF} = {8D0B2845-A32B-42B4-B9DD-1D711BFDBDA5}
+		{DF2FB58B-5D3C-4957-AFD1-F3D41A447AF8} = {8D0B2845-A32B-42B4-B9DD-1D711BFDBDA5}
 	EndGlobalSection
 EndGlobal

@@ -1,17 +1,14 @@
-﻿// <copyright file="Header.cs" company="SkyBet">
+// <copyright file="HeaderDocument.cs" company="SkyBet">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Domain
-{
-    using System;
+using System;
 
-    /// <summary>
-    /// Header Object for the types.
-    /// </summary>
-    public class Header
+namespace FeedMe.RecordParser.Infrastructure.Models
+{
+    public class HeaderDocument
     {
-        public Header(
+        public HeaderDocument(
             int msgId,
             string operation,
             string type,

@@ -8,9 +8,18 @@
     <CodeAnalysisRuleSet>$(SolutionDir)analysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.13.0-beta1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MongoDB.Driver" Version="2.12.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Stores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeedMe.RecordParser.Domain\FeedMe.RecordParser.Domain.csproj" />
   </ItemGroup>
 </Project>

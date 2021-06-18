@@ -2,7 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Domain
+using FeedMe.RecordParser.Domain.Data;
+
+namespace FeedMe.RecordParser.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -32,6 +34,11 @@ namespace FeedMe.Domain
                 // Get packet end.
                 position = record.IndexOf('|', position);
 
+                if (record == null)
+                {
+                    continue;
+                }
+
                 while (position > 0 && record[position - 1] == '\\')
                 {
                     position++;
@@ -52,7 +59,7 @@ namespace FeedMe.Domain
                 {
                     position++;
                 }
-            }
+             }
 
              return values;
         }

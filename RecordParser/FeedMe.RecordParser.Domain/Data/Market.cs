@@ -1,37 +1,36 @@
-﻿// <copyright file="Outcome.cs" company="SkyBet">
+﻿// <copyright file="Market.cs" company="SkyBet">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Domain
-{
-    using System;
+using System;
 
+namespace FeedMe.RecordParser.Domain.Data
+{
     /// <summary>
-    /// Outcome object.
+    /// Market object.
     /// </summary>
-    public class Outcome : Header
+    public class Market : Header
     {
-        public Outcome(
+        public Market(
             int msgId,
             string operation,
             string type,
             long timestamp,
+            string eventId,
             string marketId,
-            string outcomeId,
             string name,
-            string price,
             bool displayed,
             bool suspended)
             : base(msgId, operation, type, timestamp)
         {
+            if (string.IsNullOrWhiteSpace(eventId))
+            {
+                throw new ArgumentException(nameof(eventId));
+            }
+
             if (string.IsNullOrWhiteSpace(marketId))
             {
                 throw new ArgumentException(nameof(marketId));
-            }
-
-            if (string.IsNullOrWhiteSpace(outcomeId))
-            {
-                throw new ArgumentException(nameof(outcomeId));
             }
 
             if (string.IsNullOrWhiteSpace(name))
@@ -39,26 +38,18 @@ namespace FeedMe.Domain
                 throw new ArgumentException(nameof(name));
             }
 
-            if (string.IsNullOrWhiteSpace(price))
-            {
-                throw new ArgumentException(nameof(price));
-            }
-
+            this.EventId = eventId;
             this.MarketId = marketId;
-            this.OutcomeId = outcomeId;
             this.Name = name;
-            this.Price = price;
             this.Displayed = displayed;
             this.Suspended = suspended;
         }
 
+        public string EventId { get; set; }
+
         public string MarketId { get; set; }
 
-        public string OutcomeId { get; set; }
-
         public string Name { get; set; }
-
-        public string Price { get; set; }
 
         public bool Displayed { get; set; }
 

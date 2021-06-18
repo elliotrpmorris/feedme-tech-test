@@ -10,8 +10,15 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\FeedMe.Domain\FeedMe.Domain.csproj" />
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\FeedMe.RecordParser.Domain\FeedMe.RecordParser.Domain.csproj" />
+	  <ProjectReference Include="..\FeedMe.RecordParser.Infrastructure\FeedMe.RecordParser.Infrastructure.csproj" />
 	</ItemGroup>
 </Project>

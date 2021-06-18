@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Domain
+namespace FeedMe.RecordParser.Domain
 {
     using System;
     using System.IO;

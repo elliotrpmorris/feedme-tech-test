@@ -1,50 +1,28 @@
 ﻿using System;
+using FeedMe.RecordParser.Domain.Data;
 using Xunit;
 
-namespace FeedMe.Domain.Tests
+namespace FeedMe.RecordParser.Domain.Tests
 {
-    public class OutcomeTests
+    public class MarketTests
     {
         [Theory]
         [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        public void Constructor_NullOrWhiteSpace_OutcomeId_ThrowsArgumentException(
-            string outcomeId)
+        public void Constructor_NullOrWhiteSpace_EventId_ThrowsArgumentException(
+            string eventId)
         {
 
             Assert.Throws<ArgumentException>(() =>
-                new Outcome(
+                new Market(
                     2,
                     "create",
                     "outcome",
                     2,
-                    "test",
-                    outcomeId,
-                    "test2",
-                    "test3",
-                    true,
-                    true));
-        }
-
-        [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        [InlineData(" ")]
-        public void Constructor_NullOrWhiteSpace_Name_ThrowsArgumentException(
-            string name)
-        {
-
-            Assert.Throws<ArgumentException>(() =>
-                new Outcome(
-                    2,
-                    "create",
-                    "outcome",
-                    2,
+                    eventId,
                     "test",
                     "test2",
-                    name,
-                    "test3",
                     true,
                     true));
         }
@@ -58,15 +36,14 @@ namespace FeedMe.Domain.Tests
         {
 
             Assert.Throws<ArgumentException>(() =>
-                new Outcome(
+                new Market(
                     2,
                     "create",
                     "outcome",
                     2,
-                    marketId,
                     "test",
+                    marketId,
                     "test2",
-                    "test3",
                     true,
                     true));
         }
@@ -75,23 +52,24 @@ namespace FeedMe.Domain.Tests
         [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        public void Constructor_NullOrWhiteSpace_Price_ThrowsArgumentException(
-            string price)
+        public void Constructor_NullOrWhiteSpace_Name_ThrowsArgumentException(
+            string name)
         {
 
             Assert.Throws<ArgumentException>(() =>
-                new Outcome(
+                new Market(
                     2,
                     "create",
                     "outcome",
                     2,
                     "test",
                     "test2",
-                    "test3",
-                    price,
+                    name,
                     true,
                     true));
         }
+
+        
 
         [Fact]
         public void Constructor_ValidParams_AreAssignedCorrectly()
@@ -101,22 +79,20 @@ namespace FeedMe.Domain.Tests
             var operation = "create";
             var type = "outcome";
             var timestamp = 2;
-            var outcomeId = "my event";
+            var eventId = "my event";
             var marketId = "my market";
             var name = "my name";
-            var price = "my price";
             var displayed = true;
             var suspended = true;
 
-            var ret = new Outcome(
+            var ret = new Market(
                     msgId,
                     operation,
                     type,
                     timestamp,
-                    outcomeId,
+                    eventId,
                     marketId,
                     name,
-                    price,
                     displayed,
                     suspended);
 
@@ -124,10 +100,9 @@ namespace FeedMe.Domain.Tests
             Assert.Equal(msgId, ret.MsgId);
             Assert.Equal(operation, ret.Operation);
             Assert.Equal(type, ret.Type);
-            Assert.Equal(outcomeId, ret.OutcomeId);
+            Assert.Equal(eventId, ret.EventId);
             Assert.Equal(marketId, ret.MarketId);
             Assert.Equal(name, ret.Name);
-            Assert.Equal(price, ret.Price);
             Assert.Equal(displayed, ret.Displayed);
             Assert.Equal(suspended, ret.Suspended);
         }

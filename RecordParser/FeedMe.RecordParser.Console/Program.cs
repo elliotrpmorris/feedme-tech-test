@@ -2,15 +2,20 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Console
+namespace FeedMe.RecordParser.Console
 {
     using System;
-    using FeedMe.Domain;
+    using System.IO;
+    using System.Threading.Tasks;
+    using FeedMe.RecordParser.Domain;
+    using FeedMe.RecordParser.Infrastructure;
+    using FeedMe.RecordParser.Infrastructure.Models;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // TODO: We can move this to a service register class.
             var services = new ServiceCollection()
@@ -20,12 +25,20 @@ namespace FeedMe.Console
 
             var feedMeClient = services.GetService<IFeedMeClient>();
 
+            var feedMeContext = new FeedMeContext(new MongoDBConfig());
+
             feedMeClient.HandleStream();
 
             if (services is IDisposable disposable)
             {
                 disposable.Dispose();
             }
+
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json");
+
+            //var configuration = builder.Build();
         }
     }
 }

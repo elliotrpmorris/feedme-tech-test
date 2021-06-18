@@ -2,10 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FeedMe.Domain
-{
-    using System;
+using System;
 
+namespace FeedMe.RecordParser.Domain.Data
+{
     /// <summary>
     /// Event object.
     /// </summary>

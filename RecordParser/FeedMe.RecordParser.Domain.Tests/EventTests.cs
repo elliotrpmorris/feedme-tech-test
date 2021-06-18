@@ -1,7 +1,8 @@
 ﻿using System;
+using FeedMe.RecordParser.Domain.Data;
 using Xunit;
 
-namespace FeedMe.Domain.Tests
+namespace FeedMe.RecordParser.Domain.Tests
 {
     public class EventTests
     {

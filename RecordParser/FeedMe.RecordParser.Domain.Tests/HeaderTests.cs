@@ -1,8 +1,8 @@
 ﻿using System;
 using Xunit;
-using FeedMe.Domain;
+using FeedMe.RecordParser.Domain.Data;
 
-namespace FeedMe.Domain.Tests
+namespace FeedMe.RecordParser.Domain.Tests
 {
     public class HeaderTests
     {

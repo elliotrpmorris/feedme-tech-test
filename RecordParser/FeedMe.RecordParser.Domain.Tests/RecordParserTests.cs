@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace FeedMe.Domain.Tests
+namespace FeedMe.RecordParser.Domain.Tests
 {
     public class TypeParserTests
     {
@@ -45,6 +45,21 @@ namespace FeedMe.Domain.Tests
             Assert.Equal("9/4", parsedRecord[7]);
             Assert.Equal("1", parsedRecord[8]);
             Assert.Equal("0", parsedRecord[9]);
+
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void Handle_Invalid_Data_ListEmpty(string testOutcome)
+        {
+            
+            var recordParser = new RecordParser();
+
+            var parsedRecord = recordParser.ParseRecord(testOutcome);
+
+            //Assert.True(parsedRecord.l)
 
         }
     }
